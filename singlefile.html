@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Once Upon A Coma</title>
+<style>
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #000;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.webgl-content {
+    position: relative;
+    width: min(100vw, calc(100vh * 900 / 506));
+    height: min(100vh, calc(100vw * 506 / 900));
+    background: #222C36;
+}
+
+.webgl-content * {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#gameContainer {
+    width: 100%;
+    height: 100%;
+}
+
+.loading-screen {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    background: #222C36;
+    color: #e6e6e6;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.loading-title {
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.loading-bar {
+    width: min(60%, 360px);
+    height: 8px;
+    overflow: hidden;
+    background: #3a4652;
+    border-radius: 4px;
+}
+
+.loading-bar > span {
+    display: block;
+    width: 0;
+    height: 100%;
+    background: #e6e6e6;
+    transition: width 0.2s ease;
+}
+</style>
+<script src="https://raw.githack.com/CoreScripts/Once-Upon-a-Coma/main/Build/UnityLoader.js"></script>
+</head>
+<body>
+<div class="webgl-content">
+  <div id="gameContainer"></div>
+  <div id="loading" class="loading-screen">
+    <div class="loading-title">Loading...</div>
+    <div class="loading-bar"><span id="loading-bar"></span></div>
+  </div>
+</div>
+<script>
+  var loadingScreen = document.getElementById("loading");
+  var loadingBar = document.getElementById("loading-bar");
+
+  var gameInstance = UnityLoader.instantiate(
+    "gameContainer",
+    "https://raw.githack.com/CoreScripts/Once-Upon-a-Coma/main/Build/OnceUponAComa.json",
+    {
+      onProgress: function (instance, progress) {
+        loadingBar.style.width = Math.max(0, Math.min(1, progress)) * 100 + "%";
+        if (progress >= 1) {
+          loadingScreen.style.display = "none";
+        }
+      }
+    }
+  );
+</script>
+</body>
+</html>
