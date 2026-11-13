@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Once Upon A Coma</title>
+<link rel="stylesheet" href="TemplateData/style.css">
+<script src="Build/UnityLoader.js"></script>
+</head>
+<body>
+<div class="webgl-content">
+  <div id="gameContainer"></div>
+  <div id="loading" class="loading-screen">
+    <div class="loading-title">Loading...</div>
+    <div class="loading-bar"><span id="loading-bar"></span></div>
+  </div>
+</div>
+<script>
+  var loadingScreen = document.getElementById("loading");
+  var loadingBar = document.getElementById("loading-bar");
+
+  var gameInstance = UnityLoader.instantiate("gameContainer", "Build/OnceUponAComa.json", {
+    onProgress: function (instance, progress) {
+      loadingBar.style.width = Math.max(0, Math.min(1, progress)) * 100 + "%";
+      if (progress >= 1) {
+        loadingScreen.style.display = "none";
+      }
+    }
+  });
+</script>
+</body>
+</html>

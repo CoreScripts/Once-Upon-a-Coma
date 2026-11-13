@@ -1,0 +1,9 @@
+{
+  "dataUrl": "OnceUponAComa.data.unityweb",
+  "asmCodeUrl": "OnceUponAComa.asm.code.unityweb",
+  "asmMemoryUrl": "OnceUponAComa.asm.memory.unityweb",
+  "asmFrameworkUrl": "OnceUponAComa.asm.framework.unityweb",
+  "TOTAL_MEMORY": 536870912,
+  "backgroundColor": "#222C36",
+  "splashScreenStyle": "Dark"
+}

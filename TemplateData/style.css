@@ -1,0 +1,112 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #000;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.webgl-content {
+    position: relative;
+    width: min(100vw, calc(100vh * 900 / 506));
+    height: min(100vh, calc(100vw * 506 / 900));
+    background: #000;
+}
+
+.webgl-content * {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#gameContainer {
+    width: 100%;
+    height: 100%;
+}
+
+.loading-screen {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    background: #222C36;
+    color: #e6e6e6;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.loading-title {
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.loading-bar {
+    width: min(60%, 360px);
+    height: 8px;
+    overflow: hidden;
+    background: #3a4652;
+    border-radius: 4px;
+}
+
+.loading-bar > span {
+    display: block;
+    width: 0;
+    height: 100%;
+    background: #e6e6e6;
+    transition: width 0.2s ease;
+}
+
+.webgl-content .logo,
+.webgl-content .progress {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.webgl-content .logo {
+    width: 154px;
+    height: 130px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.webgl-content .progress {
+    width: 141px;
+    height: 18px;
+    margin-top: 90px;
+}
+
+.webgl-content .progress .empty {
+    float: right;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.webgl-content .progress .full {
+    float: left;
+    width: 0%;
+    height: 100%;
+    display: inline-block;
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
